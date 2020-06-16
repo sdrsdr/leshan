@@ -139,15 +139,7 @@ public class Registration implements Serializable {
     public Identity getIdentity() {
         return identity;
     }
-    
-    /**
-     * Update registration identity (needed for long sleeping devices outliving NAT sessions)
-     * @param newAddress from associated CoAP response
-     */
-    public void updateIdentity(InetSocketAddress newAddress) {
-    	identity.setPeerAddress(newAddress);
-    	
-    }
+
     /**
      * Gets the client's network socket address.
      * 

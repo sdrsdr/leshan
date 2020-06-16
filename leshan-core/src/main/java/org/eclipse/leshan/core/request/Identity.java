@@ -31,7 +31,7 @@ public class Identity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private InetSocketAddress peerAddress;
+    private final InetSocketAddress peerAddress;
     private final String pskIdentity;
     private final PublicKey rawPublicKey;
     private final String x509CommonName;
@@ -169,8 +169,4 @@ public class Identity implements Serializable {
             return false;
         return true;
     }
-
-	public void setPeerAddress(InetSocketAddress newAddress) {
-		peerAddress=newAddress;		
-	}
 }

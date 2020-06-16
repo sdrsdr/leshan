@@ -17,7 +17,6 @@ package org.eclipse.leshan.server.californium.observation;
 
 import static org.eclipse.leshan.core.californium.ResponseCodeUtil.toLwM2mResponseCode;
 
-import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -220,15 +219,6 @@ public class ObservationServiceImpl implements ObservationService, NotificationL
             LOG.error("Unexpected error: There is no registration with id {} for this observation {}",
                     observation.getRegistrationId(), observation);
             return;
-        }
-
-        // checks if peer address changed due to NAT session timeout and recreation (coapResponse matched to coapRequest via message token/DTLS keys)
-        InetSocketAddress peerAddress = coapResponse.getSourceContext().getPeerAddress();
-        if (!  peerAddress.equals(registration.getIdentity().getPeerAddress())) {
-            LOG.trace("Updating registration address from {} to {} due to new coapResponce",
-            		registration.getIdentity().getPeerAddress(),coapResponse.getSourceContext().getPeerAddress());
-           
-        	registration.updateIdentity(peerAddress);
         }
 
         try {
