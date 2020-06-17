@@ -367,13 +367,17 @@ public class LeshanServerBuilder {
      * With this option you can allow Leshan to update Registration on observe notification. This is clearly OUT OF
      * SPECIFICATION and so this is not recommended and should be used only if there is no other way.
      * 
-     * For {@code coap://} you probably need to use a the Relaxed responde matching mode.
+     * For {@code coap://} you probably need to use a the Relaxed response matching mode.
      * 
      * <pre>
-     * coapConfig.setString(NetworkConfig.Keys.RESPONSE_MATCHING, "RELAXED")
+     * coapConfig.setString(NetworkConfig.Keys.RESPONSE_MATCHING, "RELAXED");
      * </pre>
      * 
      * @since 1.1
+     * 
+     * @see <a href=
+     *      "https://github.com/eclipse/leshan/wiki/LWM2M-Devices-with-Dynamic-IP#is-the-update-request-mandatory--should-i-update-registration-on-notification-">Dynamic
+     *      IP environnement documentaiton</a>
      */
     public LeshanServerBuilder setUpdateRegistrationOnNotification(boolean updateRegistrationOnNotification) {
         this.updateRegistrationOnNotification = updateRegistrationOnNotification;
